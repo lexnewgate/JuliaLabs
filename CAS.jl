@@ -16,7 +16,7 @@ md"简单方程"
 # ╔═╡ f09270d6-a3e6-43b3-b6c3-045d088ebaa9
 begin
 	@variables x
-	exp0= 6//x~5-x
+	exp0= 8//x~6-x
 end
 
 # ╔═╡ fc6d8839-53f0-48ed-bd7a-99f6bddd79f0
@@ -24,13 +24,20 @@ md"解简单方程"
 
 # ╔═╡ f8285a4f-2a9e-45b0-a5b8-fce5786c74b7
 begin
-	if Symbolics.islinear(exp0.lhs,[x]) && Symbolics.islinear(exp0.lhs,[x])	
+	if Symbolics.isaffine(exp0.lhs,[x]) && Symbolics.isaffine(exp0.rhs,[x])	
 		exp0_result=Symbolics.solve_for(exp0,x)
 		md"x=$exp0_result"
+
 	else 
    		Symbolics.simplify(exp0)
 	end
 end
+
+# ╔═╡ 17aa5fbf-6e5c-4121-b077-ae94daec687f
+md"代入数值"
+
+# ╔═╡ 8d2e2b2a-f5d4-4865-9935-bcca3dcc5240
+[substitute(exp0,x=>i) for i in [1,2,4]] 
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1530,7 +1537,9 @@ version = "1.4.1+0"
 # ╠═17fd9e70-4a6a-11ee-0a79-f7fb72036be1
 # ╟─a62a9a5a-fbe0-4f85-ba2d-ef134f42a363
 # ╠═f09270d6-a3e6-43b3-b6c3-045d088ebaa9
-# ╠═fc6d8839-53f0-48ed-bd7a-99f6bddd79f0
-# ╠═f8285a4f-2a9e-45b0-a5b8-fce5786c74b7
+# ╟─fc6d8839-53f0-48ed-bd7a-99f6bddd79f0
+# ╟─f8285a4f-2a9e-45b0-a5b8-fce5786c74b7
+# ╠═17aa5fbf-6e5c-4121-b077-ae94daec687f
+# ╠═8d2e2b2a-f5d4-4865-9935-bcca3dcc5240
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
