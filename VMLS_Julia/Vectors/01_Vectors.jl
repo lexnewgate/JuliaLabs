@@ -7,7 +7,7 @@ using InteractiveUtils
 # ╔═╡ 83b78118-cba1-4ce7-8ad5-1e662ad7e585
 begin
 import Pkg
-Pkg.add(url="https://github.com/lexnewgate/VMLS.jl.git");
+Pkg.activate()
 using LinearAlgebra,SparseArrays,VMLS,Plots
 using PlutoUI
 TableOfContents()
